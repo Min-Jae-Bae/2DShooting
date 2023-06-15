@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // 태어날 때 GameOverUI를 비활성화 하고싶다.
 // 플레이어의 체력이 0이 될 때 GameOverUI를 활성화 하고싶다.
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public static GameManager instance;
 
+    public Button buttonRestart;
+
     private void Awake()
     {
         instance = this;
@@ -20,6 +23,8 @@ public class GameManager : MonoBehaviour
     {
         // 태어날 때 GameOverUI를 비활성화 하고싶다.
         gameOverUI.SetActive(false);
+
+        buttonRestart.onClick.AddListener(Restart);
     }
 
     void Update()
