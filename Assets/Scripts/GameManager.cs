@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public static GameManager instance;
 
-    public Button buttonRestart;
+    public Button buttonRetry;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         // 태어날 때 GameOverUI를 비활성화 하고싶다.
         gameOverUI.SetActive(false);
 
-        buttonRestart.onClick.AddListener(Restart);
+        buttonRetry.onClick.AddListener(Retry);
     }
 
     void Update()
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Restart()
+    public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
