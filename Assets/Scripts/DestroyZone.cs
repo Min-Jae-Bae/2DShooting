@@ -8,7 +8,17 @@ public class DestroyZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if (other.gameObject.name.Contains("Bullet"))
+        {
+            //총알은 objectpool로 되어있으니 파괴하지 않고 비활성화 한다.
+            other.gameObject.SetActive(false);
+            //비활성 목록에 다시 추가한다.
+            PlayerFire.deActiveBulletObjectPool.Add(other.gameObject);
+        }
+        else
+        {
+            Destroy(other.gameObject); 
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

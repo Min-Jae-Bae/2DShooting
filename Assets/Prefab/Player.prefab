@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletFactory: {fileID: 7689336191133676456, guid: 215dd087426e47c479006395a4d01112, type: 3}
   firePosition: {fileID: 7859821571952251674}
+  fireTime: 0.2
 --- !u!1001 &7859821571640298884
 PrefabInstance:
   m_ObjectHideFlags: 0

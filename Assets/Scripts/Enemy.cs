@@ -61,6 +61,13 @@ public class Enemy : MonoBehaviour
 
 
         }
+        else
+        {
+
+            collision.gameObject.SetActive(false);
+            PlayerFire.deActiveBulletObjectPool.Add(collision.gameObject);
+
+        }
         // 점수를 1점 증가시키고 싶다.
         ScoreManager.instance.SCORE++;
 
