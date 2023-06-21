@@ -80,6 +80,8 @@ public class Enemy : MonoBehaviour
 
             Destroy(this.gameObject);
 
+            PlayerLevel.instance.EXP++;
+
             // Enemy가 파괴될 때 폭발공장에서 폭발을 만들어서
             GameObject explosion = Instantiate(explosionFactory);
             // 내위치에 배치하고싶다.

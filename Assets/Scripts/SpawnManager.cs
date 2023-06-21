@@ -7,18 +7,44 @@ using UnityEngine;
 // 적 공장에서 적을 만들어서 그 위치에 배치하고 싶다.
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager instance;
+
     public Transform[] spawnList;
     float currentTime;
     public float makeTime = 1f;
     GameObject enemyFactory;
     int prevChooseIndex = -1;
 
+    public bool isBoss;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         enemyFactory = Resources.Load<GameObject>("Enemy");
     }
 
     private void Update()
+    {
+
+        if (isBoss)
+        {
+            UpdateBoss();
+        }
+        else
+        {
+            UpdateNormal(); 
+        }
+    }
+
+    // 화면에 강적 공장에서 하나만 만들어지게 하고싶다.
+    private void UpdateBoss()
+    {
+
+    }
+    private void UpdateNormal()
     {
         // 일정시간마다 spawn 목록중에 랜덤으로 하나 정하고 싶다.
         // 적 공장에서 적을 만들어서 그 위치에 배치하고 싶다.
