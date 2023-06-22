@@ -44,11 +44,13 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        int damage = 1;
+
         // 만약 부딪힌 상대방의 이름에 enemy라는 문자열이 포함되어있다면
         // 체력을 1 감소하고 싶다.
         if (collision.gameObject.name.Contains("Player"))
         {
-
+            damage = EnemyHP.instance.HP;
             //체력을 1 감소하고 싶다.
             PlayerHP.instance.HP--;
             if (PlayerHP.instance.HP <= 0)
@@ -74,7 +76,7 @@ public class Enemy : MonoBehaviour
         // enemyHP 체력을 1 감소하고싶다.
         // 체력이 0이하라면
         // 나죽자 하고싶다.
-        EnemyHP.instance.HP--;
+        EnemyHP.instance.HP -= damage;
         if (EnemyHP.instance.HP <= 0)
         {
 

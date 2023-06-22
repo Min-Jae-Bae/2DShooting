@@ -24,6 +24,7 @@ public class Boss : MonoBehaviour
     {
         // 명시적 방법
         state = MOVE;
+        moveTarget = GameObject.Find("BossTarget").transform;
     }
 
     private void Update()
@@ -63,6 +64,7 @@ public class Boss : MonoBehaviour
         if (currentTime > fireTime)
         {
             GameObject bullet = Instantiate(bossBulletFactory);
+            bullet.layer = LayerMask.NameToLayer("EnemyBullet");
             bullet.transform.position = transform.position;
             bullet.transform.eulerAngles = new Vector3(0, 0, angleZ);
             angleZ += 360 / bulletCount;
@@ -91,5 +93,15 @@ public class Boss : MonoBehaviour
         }
 
         state = WAIT;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            other.gameObject.SetActive(false);
+            PlayerFire.deActiveBulletObjectPool.Add(other.gameObject);
+        }
+        Destroy(gameObject);
     }
 }
